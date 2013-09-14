@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>HackCMU</title>
+    <script type="text/javascript"
+            src = "simpleGame.js"></script>
+    <script type="text/javascript">
+        var player;
+        var space;
+        var game;
+        var delay = .2;
+        var timer;
+        
+        function Player(){
+            tPlayer = new Sprite(game, "Stick_Figure.jpg", 30, 90);
+            tPlayer.setSpeed(0);
+            tPlayer.direction = 90;
+            
+            tPlayer.checkKeys = function(){
+                elapsedTime = timer.getElapsedTime();
+                this.setBoundAction(BOUNCE);
+                if (keysDown[K_LEFT]){
+                    this.direction = 270;
+                    this.changeXby(-5);
+                }
+                
+                if (keysDown[K_RIGHT]){
+                    this.direction = 90;
+                    this.changeXby(5);
+                }
+                
+                if (keysDown[K_UP]){
+                    if (this.y > 25){
+                        this.addVector(0, 2);
+                    }
+                    this.direction = 0;
+                }
+            } // end checkKeys
+            
+            tPlayer.checkGravity = function(){
+                if (this.y > 500){
+                    this.setPosition(this.x, 500);
+                } else {
+                    this.addVector(180, .5);
+                } // end if
+            } // end checkGravity
+
+            tPlayer.checkBounds = function(){
+                if (this.x < 20){ // left
+                    this.setPosition(20, this.y);
+                }
+                if (this.x > 980){ // right
+                    this.setPosition(980, this.y);
+                }
+                if (this.y < 25){ // top
+                    this.setPosition(this.x, 25);
+                }
+            } // end checkBounds
+
+            return tPlayer;
+        }
+
+        function init(){
+            game = new Scene();
+            player = new Player();
+            timer = new Timer();
+            space = new Sprite(game, "8BitLevel1.png", 1000, 600);
+            space.setSpeed(0);
+            space.setPosition(500, 300);
+            
+            game.start();
+        } // end init
+        
+        function update(){
+            game.clear();
+            space.update();
+            
+            player.checkKeys();
+            player.checkGravity();
+            player.checkBounds();
+            player.update();
+        }
+        
+    </script>
+</head>
+<body onload = "init()">   
+</body>
+</html>

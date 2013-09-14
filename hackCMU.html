@@ -14,7 +14,7 @@
         
         function Player(){
             tPlayer = new Sprite(game, "cute.gif", 40, 40);
-            tPlayer.setSpeed(0);
+            tPlayer.setSpeed(2);
             tPlayer.direction = 90;
             
             tPlayer.checkKeys = function(){
@@ -65,7 +65,7 @@
             game = new Scene();
             player = new Player();
             timer = new Timer();
-            space = new Sprite(game, "8BitLevel1.png", 1000, 600);
+            space = new Sprite(game, "img/8BitLevel1.png", 1000, 600);
             space.setSpeed(0);
             space.setPosition(500, 300);
             

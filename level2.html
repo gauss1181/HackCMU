@@ -99,22 +99,26 @@
         function makeObstacles(){
             oWidth = 50;
             oHeight = 25;
-            obstacles = new Array(18);
+            obstacles = new Array(27);
             for (i = 0; i < 6; i++){
                 obstacles[i] = new Obstacle();
-                obstacles[i].setPosition(oWidth * i, oHeight * i);
+                obstacles[i].setPosition(100, oHeight * i);
             }
             for (j = 6; j < 12; j++){
                 obstacles[j] = new Obstacle();
-                obstacles[j].setPosition(oWidth * (j-4), 400 - oHeight * (j-5))
+                obstacles[j].setPosition(100, 400 - oHeight * (j-6));
             }
             for (k = 12; k < 18; k++){
                 obstacles[k] = new Obstacle();
-                obstacles[k].setPosition(500, oHeight * (k-12));
+                obstacles[k].setPosition(600 - oWidth * (k-11), oHeight * (k-12));
             }
             for (m = 18; m < 24; m++){
                 obstacles[m] = new Obstacle();
-                obstacles[m].setPosition(500, 400 - oHeight * (m-17));
+                obstacles[m].setPosition(600 - oWidth * (m-17), 400 - oHeight * (m-18));
+            }
+            for (n = 24; n < 27; n++){
+                obstacles[n] = new Obstacle();
+                obstacles[n].setPosition(600 - oWidth * (n-24), 200);
             }
         }
 

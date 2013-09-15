@@ -15,37 +15,49 @@
             tPlayer.setSpeed(0);
             tPlayer.direction = 90;
             tPlayer.falling = true;
+            tPlayer.moving = true;
             tPlayer.step = 5
 
             tPlayer.checkKeys = function(){
                 if (keysDown[K_LEFT]){
+                    //this.moving = true;
                     this.direction = 270;
                     this.changeXby(-this.step);
                 }
                 
                 if (keysDown[K_RIGHT]){
+                    //this.moving = true;
                     this.direction = 90;
                     this.changeXby(this.step);
                 }
                 
                 if (keysDown[K_UP]){
+                    //this.moving = true;
                     this.direction = 0;
-                    this.changeYby(-this.step);
+                    this.changeYby(-4*this.step);
                 }
             }
             
             tPlayer.checkGravity = function(){
-                if (this.falling) {
-                    this.changeYby(2);
-                    this.addVector(180,0.1);
-                    console.log(this.speed);
-                    console.log(this.y);
-                }
-                if (this.y == 400){
-                    this.falling = false;
+                if (this.moving) {  
+                    if (this.falling) {
+                        this.changeYby(2);
+                        this.addVector(180, 0.05);
+                        console.log(this.speed);
+                        console.log(this.y);
+                    }
                 }
             } // end checkGravity
             
+            tPlayer.checkBound = function() {
+                console.log(this.y);
+                if(this.y > 370) {
+                    this.y = 370;
+                    this.moving = false;
+                } 
+                
+
+            }
             
             return tPlayer;
         }
@@ -66,6 +78,7 @@
             space.update();
             player.checkKeys();
             player.checkGravity();
+            player.checkBound();
             player.update();
         }
     </script>

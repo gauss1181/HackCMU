@@ -66,16 +66,22 @@
             game.setSize(600,400);
             player = new Player();
             timer = new Timer();
-            space = new Sprite(game, "8BitLevel1.png", 600, 400);
-            space.setSpeed(0);
-            space.setPosition(300, 200);
+            space1 = new Sprite(game, "Background1.png", 600, 400);
+            space2 = new Sprite(game, "Background1.png", 600, 400);
+            space1.setSpeed(-1);
+            space1.setPosition(300, 200);
+            space2.setSpeed(-1);
+            space2.setPosition(900, 200);
+
+            
             
             game.start();
         } // end init
         
         function update(){
             game.clear();
-            space.update();
+            space1.update();
+            space2.update();            
             player.checkKeys();
             player.checkGravity();
             player.checkBound();

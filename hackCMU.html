@@ -15,11 +15,8 @@
             tPlayer.setSpeed(0);
             tPlayer.direction = 90;
             tPlayer.falling = true;
-<<<<<<< HEAD
             tPlayer.step = 5
-=======
->>>>>>> 16b93e730748419e90395980ee9b1f697297d8d3
-            
+
             tPlayer.checkKeys = function(){
                 if (keysDown[K_LEFT]){
                     this.direction = 270;
@@ -33,51 +30,23 @@
                 
                 if (keysDown[K_UP]){
                     this.direction = 0;
-<<<<<<< HEAD
-                    this.changeYby(-10);
-=======
-                    if (this.falling == false){
-                        this.changeYby(-10);
-                        this.falling = true;
-                        this.addVector(0, 10);
-                    }
->>>>>>> 16b93e730748419e90395980ee9b1f697297d8d3
+                    this.changeYby(-this.step);
                 }
             }
             
             tPlayer.checkGravity = function(){
-<<<<<<< HEAD
                 if (this.falling) {
-                    this.changeYby(2);}
-            } // end checkGravity
-            
-            
-=======
-                if (this.falling){
-                    this.addVector(180, 1);
+                    this.changeYby(2);
+                    this.addVector(180,0.1);
+                    console.log(this.speed);
+                    console.log(this.y);
                 }
-                if (this.y >= 500){
-                    this.setPosition(this.x, 500);
+                if (this.y == 400){
                     this.falling = false;
-                    this.setSpeed(0);
-                } else {
-                    this.addVector(180, .5);
-                } // end if
+                }
             } // end checkGravity
-
-            tPlayer.checkBounds = function(){
-                if (this.x < 20){ // left
-                    this.setPosition(20, this.y);
-                }
-                if (this.x > 780){ // right
-                    this.setPosition(780, this.y);
-                }
-                if (this.y < 25){ // top
-                    this.setPosition(this.x, 25);
-                }
-            } // end checkBounds
-
->>>>>>> 16b93e730748419e90395980ee9b1f697297d8d3
+            
+            
             return tPlayer;
         }
         function init(){

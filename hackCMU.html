@@ -32,12 +32,13 @@
                     this.direction = 90;
                     this.changeXby(this.step);
                 }
-                
-                if (keysDown[K_UP]){
-                    //this.moving = true;
-                    this.direction = 0;
-                    this.changeYby(-4*this.step);
-                }
+                if (this.moving == false) {
+					if (keysDown[K_UP]){
+						//this.moving = true;
+						this.direction = 0;
+						this.changeYby(-4*this.step);
+					}
+				}
             }
             
             tPlayer.checkGravity = function(){
@@ -76,7 +77,7 @@
             space1.setSpeed(0);
             space1.setPosition(300, 200);
             player = new Player();
-            
+			player.setPosition(20,100);
             game.start();
         } // end init
         

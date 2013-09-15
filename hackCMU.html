@@ -12,6 +12,7 @@
         var timer;
         function Player() {
             tPlayer = new Sprite(game, "cute.gif", 40, 40);
+            tPlayer.show();
             tPlayer.setSpeed(0);
             tPlayer.direction = 90;
             tPlayer.falling = true;
@@ -19,6 +20,7 @@
             tPlayer.step = 5
 
             tPlayer.checkKeys = function(){
+                tPlayer.changeImage("cute.gif");
                 if (keysDown[K_LEFT]){
                     //this.moving = true;
                     this.direction = 270;
@@ -42,7 +44,7 @@
                 if (this.moving) {  
                     if (this.falling) {
                         this.changeYby(2);
-                        this.addVector(180, 0.05);
+                        this.addVector(180, 0.4);
                         console.log(this.speed);
                         console.log(this.y);
                     }
@@ -51,11 +53,16 @@
             
             tPlayer.checkBound = function() {
                 console.log(this.y);
-                if(this.y > 370) {
-                    this.y = 370;
+                if(this.y > 360) {
+                    this.y = 360;
                     this.moving = false;
                 } 
-                
+                if(this.y < 15) {
+                    this.y = 15;
+                }
+                if (this.x < 15) {
+                    this.x = 15;
+                }
 
             }
             
@@ -63,25 +70,19 @@
         }
         function init(){
             game = new Scene();
-            game.setSize(600,400);
-            player = new Player();
+            game.setSize(600, 400);
             timer = new Timer();
             space1 = new Sprite(game, "Background1.png", 600, 400);
-            space2 = new Sprite(game, "Background1.png", 600, 400);
-            space1.setSpeed(-1);
+            space1.setSpeed(0);
             space1.setPosition(300, 200);
-            space2.setSpeed(-1);
-            space2.setPosition(900, 200);
-
-            
+            player = new Player();
             
             game.start();
         } // end init
         
         function update(){
             game.clear();
-            space1.update();
-            space2.update();            
+            space1.update();            
             player.checkKeys();
             player.checkGravity();
             player.checkBound();

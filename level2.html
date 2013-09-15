@@ -76,7 +76,7 @@
         }
 
         function Obstacle(){
-            tObstacle = new Sprite(game, "block.png", 100, 25);
+            tObstacle = new Sprite(game, "block.png", 50, 25);
             tObstacle.setSpeed(0);
 
             tObstacle.checkCollision = function(){
@@ -97,16 +97,24 @@
         }
 
         function makeObstacles(){
-            oWidth = 100;
+            oWidth = 50;
             oHeight = 25;
-            obstacles = new Array(11);
+            obstacles = new Array(18);
             for (i = 0; i < 6; i++){
                 obstacles[i] = new Obstacle();
                 obstacles[i].setPosition(oWidth * i, oHeight * i);
             }
-            for (j = 6; j < obstacles.length; j++){
+            for (j = 6; j < 12; j++){
                 obstacles[j] = new Obstacle();
-                obstacles[j].setPosition(oWidth * (j - 4), 420 - oHeight * (j - 5));
+                obstacles[j].setPosition(oWidth * (j-4), 400 - oHeight * (j-5))
+            }
+            for (k = 12; k < 18; k++){
+                obstacles[k] = new Obstacle();
+                obstacles[k].setPosition(500, oHeight * (k-12));
+            }
+            for (m = 18; m < 24; m++){
+                obstacles[m] = new Obstacle();
+                obstacles[m].setPosition(500, 400 - oHeight * (m-17));
             }
         }
 
@@ -126,7 +134,7 @@
             space1.setPosition(300, 200);
             player = new Player();
             player.setPosition(20,100);
-            //makeObstacles();
+            makeObstacles();
             game.start();
         } // end init
         
@@ -136,7 +144,7 @@
             player.checkKeys();
             player.checkGravity();
             player.checkBound();
-            //updateObstacles();
+            updateObstacles();
             player.update();
         }
     </script>

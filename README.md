@@ -1,6 +1,8 @@
 Gravity Gap
 =======
 
+PLAY THE GAME HERE: http://www.andrew.cmu.edu/user/meganche/hackCMU.html
+
 Welcome to Gravity Gap, a 2d platform game made by CMU sophomore Megan Chen and masters students Weiqi Cai,
 Lina Li, and Teng Zhang for the HackCMU Fall 2013 hackathon.
 

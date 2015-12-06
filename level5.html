@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Level 5: Bite the Bullet</title>
+</head>
+<body onload = "init()">
     <script type="text/javascript" src = "js/simpleGame.js"></script>
     <script type="text/javascript">
         var player;
@@ -103,18 +105,18 @@
             for (i = 0; i < obstacles.length; i++){
                 obstacles[i] = new Obstacle();
                 obstacles[i].setPosition(oWidth, Math.round(oHeight * (i+1.3)));
-				obstacles[i].setSpeed(-Math.random()*1);
-				
+                obstacles[i].setSpeed(-Math.random()*1);
+                
             }
         }
 
         function updateObstacles(){
             for (i = 0; i < obstacles.length; i++){
-				if (i == Math.round(Math.random()*(obstacles.length-1))) {
-					obstacles[i].setSpeed(-Math.random()*10);
-				}
+                if (i == Math.round(Math.random()*(obstacles.length-1))) {
+                    obstacles[i].setSpeed(-Math.random()*10);
+                }
                 obstacles[i].checkCollision();
-				
+                
                 obstacles[i].update();
             }
         }
@@ -142,7 +144,5 @@
             player.update();
         }
     </script>
-</head>
-<body onload = "init()">   
 </body>
 </html>

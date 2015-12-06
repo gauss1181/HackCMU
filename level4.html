@@ -11,7 +11,7 @@
         var game;
         var timer;
         function Player() {
-            tPlayer = new Sprite(game, "cute.gif", 40, 40);
+            tPlayer = new Sprite(game, "img/cute.gif", 40, 40);
             tPlayer.show();
             tPlayer.setSpeed(0);
             tPlayer.direction = 90;
@@ -73,7 +73,7 @@
         }
 
         function Obstacle(){
-            pics = ["pig1.png", "pig2.png","pig3.png"];
+            pics = ["img/pig1.png", "img/pig2.png","img/pig3.png"];
             index = Math.floor(randomFromInterval(0,3));
             tObstacle = new Sprite(game, pics[0], 40, 40);
             tObstacle.checkCollision = function(){
@@ -104,17 +104,17 @@
         }
 
         function updateObstacles(){
-            pics = ["pig1.png", "pig2.png","pig3.png"];
+            pics = ["img/pig1.png", "img/pig2.png","img/pig3.png"];
             for (i = 0; i < obstacles.length; i++){
                 obstacles[i].checkCollision();
                 obstacles[i].update();
-                obstacles[i].changeImage("pig2.png");
-                obstacles[i].changeImage("pig1.png");
+                obstacles[i].changeImage("img/pig2.png");
+                obstacles[i].changeImage("img/pig1.png");
             }
         }
 
         function helpWall() {
-            tHelpWall = new Sprite(game, "wall.png", 60, 15);
+            tHelpWall = new Sprite(game, "img/wall.png", 60, 15);
             tHelpWall.checkCollision = function(){
                 // check if player has crashed into obstacle
                 if (this.collidesWith(player)){
@@ -149,7 +149,7 @@
             game = new Scene();
             game.setSize(600, 400);
             timer = new Timer();
-            space1 = new Sprite(game, "Background1.png", 600, 400);
+            space1 = new Sprite(game, "img/Background1.png", 600, 400);
             space1.setSpeed(0);
             space1.setPosition(300, 200);
             player = new Player();
@@ -165,8 +165,8 @@
             player.checkKeys();
             player.checkGravity();
             player.checkBound();
-            player.changeImage("cute2.png");
-            player.changeImage("cute1.png");
+            player.changeImage("img/cute2.png");
+            player.changeImage("img/cute1.png");
             updateObstacles();
             updateHelpWall();
             player.update();

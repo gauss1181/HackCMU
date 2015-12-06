@@ -11,7 +11,7 @@
         var game;
         var timer;
         function Player() {
-            tPlayer = new Sprite(game, "cute.gif", 40, 40);
+            tPlayer = new Sprite(game, "img/cute.gif", 40, 40);
             tPlayer.show();
             tPlayer.setSpeed(0);
             tPlayer.direction = 90;
@@ -21,7 +21,7 @@
             tPlayer.step = 5
 
             tPlayer.checkKeys = function(){
-                tPlayer.changeImage("cute.gif");
+                tPlayer.changeImage("img/cute.gif");
                 if (keysDown[K_LEFT]){
                     //this.moving = true;
                     this.direction = 270;
@@ -77,7 +77,7 @@
         }
 
         function Obstacle(){
-            tObstacle = new Sprite(game, "bullet.gif", 35, 10);
+            tObstacle = new Sprite(game, "img/bullet.gif", 35, 10);
             tObstacle.setSpeed(-Math.random()*1);
 
             tObstacle.checkCollision = function(){
@@ -124,7 +124,7 @@
             game = new Scene();
             game.setSize(600, 400);
             timer = new Timer();
-            space1 = new Sprite(game, "Background1.png", 600, 400);
+            space1 = new Sprite(game, "img/Background1.png", 600, 400);
             space1.setSpeed(0);
             space1.setPosition(300, 200);
             player = new Player();

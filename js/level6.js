@@ -11,48 +11,43 @@ function Player() {
     tPlayer.falling = true;
     tPlayer.moving = true;
     tPlayer.dead = false;
-    tPlayer.step = 5
+    tPlayer.step = 5;
 
-    tPlayer.checkKeys = function(){
+    tPlayer.checkKeys = function() {
         tPlayer.changeImage("img/cute.gif");
-        if (keysDown[K_LEFT]){
-            //this.moving = true;
+        if (keysDown[K_LEFT]) {
             this.direction = 270;
             this.changeXby(-this.step);
         }
         
-        if (keysDown[K_RIGHT]){
-            //this.moving = true;
+        if (keysDown[K_RIGHT]) {
             this.direction = 90;
             this.changeXby(this.step);
         }
+
         if (this.moving == false) {
-            if (keysDown[K_UP]){
-                //this.moving = true;
+            if (keysDown[K_UP]) {
                 this.direction = 0;
-                this.changeYby(-4*this.step);
+                this.changeYby(-4 * this.step);
             }
         }
     }
     
-    tPlayer.checkGravity = function(){
+    tPlayer.checkGravity = function() {
         if (this.moving) {  
             if (this.falling) {
                 this.changeYby(2);
                 this.addVector(180, 0.4);
-                console.log(this.speed);
-                console.log(this.y);
             }
         }
-    } // end checkGravity
+    }
     
     tPlayer.checkBound = function() {
-        console.log(this.y);
-        if(this.y > 360) {
+        if (this.y > 360) {
             this.y = 360;
             this.moving = false;
         } 
-        if(this.y < 15){
+        if (this.y < 15) {
             this.y = 15;
         }
         if (this.x < 15) {
@@ -61,7 +56,7 @@ function Player() {
         if (this.x > 590) {
             this.x = 590;
             game.stop();
-            document.location.href="congrats.html";
+            document.location.href = "congrats.html";
         }
 
     }
@@ -69,7 +64,7 @@ function Player() {
     return tPlayer;
 }
 
-function Obstacle(){
+function Obstacle() {
     tObstacle = new Sprite(game, "img/Kappa.png", 30, 30);
     tObstacle.show();
     tObstacle.setSpeed(-1);
@@ -77,61 +72,45 @@ function Obstacle(){
     tObstacle.falling = true;
     tObstacle.moving = true;
     tObstacle.dead = false;
-    tObstacle.step = 4
+    tObstacle.step = 4;
 
-    tObstacle.checkCollision = function(){
+    tObstacle.checkCollision = function() {
         // check if player has crashed into obstacle
-        if (this.collidesWith(player)){
+        if (this.collidesWith(player)) {
             player.dead = true;
             game.stop();
-            // makeObstacles();
             document.location.href = "";
         }
     }
 
-    tObstacle.checkKeys = function(){
-        // tPlayer.changeImage("Kappa.png");
-        // if (keysDown[K_LEFT]){
-        //     //this.moving = true;
-        //     this.direction = 90;
-        //     this.changeXby(this.step);
-        // }
-        
-        // if (keysDown[K_RIGHT]){
-        //     //this.moving = true;
-        //     this.direction = 270;
-        //     this.changeXby(-this.step);
-        // }
+    tObstacle.checkKeys = function() {
         if (this.moving == false) {
-            if (keysDown[K_UP]){
+            if (keysDown[K_UP]) {
                 this.direction = 0;
-                this.changeYby(-4*this.step);
+                this.changeYby(-4 * this.step);
             }
         }
     }
     
-    tObstacle.checkGravity = function(){
+    tObstacle.checkGravity = function() {
         if (this.moving) {  
             if (this.falling) {
                 this.changeYby(2);
                 this.addVector(180, 0.4);
-                console.log(this.speed);
-                console.log(this.y);
             }
         }
-    } // end checkGravity
+    }
     
     tObstacle.checkBound = function() {
-        console.log(this.y);
-        if(this.y > 90*i) {
-            this.y = 90*i;
+        if (this.y > 90 * i) {
+            this.y = 90 * i;
             this.moving = false;
         }
-        if(this.y > 360){
+        if (this.y > 360) {
             this.y = 360;
             this.moving = false;
         }
-        if(this.y < 15) {
+        if (this.y < 15) {
             this.y = 15;
         }
         if (this.x < 15) {
@@ -139,7 +118,6 @@ function Obstacle(){
         }
         if (this.x > 590) {
             this.x = 590;
-            //document.location.href=""
         }
 
     }
@@ -147,35 +125,26 @@ function Obstacle(){
     return tObstacle; 
 }
 
-function randomFromInterval(from, to){
-    return (Math.random()*(to-from+1)+from);
+function randomFromInterval(from, to) {
+    return (Math.random() * (to - from + 1) + from);
 }
 
-function makeObstacles(){
+function makeObstacles() {
     oWidth = 40;
     oHeight = 40;
     obstacle = new Array(8);
-    for (i=0; i<5; i++){
+    for (i = 0; i < 5; i++) {
         obstacle[i] = new Obstacle();
-        obstacle[i].setPosition(500-oWidth-50*i, oHeight *i )
+        obstacle[i].setPosition(500 - oWidth - 50 * i, oHeight * i);
     }
-    for (j=5; j<obstacle.length; j++){
+    for (j = 5; j < obstacle.length; j++) {
         obstacle[j] = new Obstacle();
-        obstacle[j].setPosition(700-oWidth-50*j, oHeight *j )
+        obstacle[j].setPosition(700 - oWidth - 50 * j, oHeight * j);
     }
-    // obstacle.setPosition(1000, 150)
-    // for (i = 0; i < 6; i++){
-    //     obstacles[i] = new Obstacle();
-    //     obstacles[i].setPosition(oWidth * i, oHeight * i);
-    // }
-    // for (j = 6; j < obstacles.length; j++){
-    //     obstacles[j] = new Obstacle();
-    //     obstacles[j].setPosition(oWidth * (j - 4), 420 - oHeight * (j - 5));
-    // }
 }
 
-function updateObstacles(){
-   for (i = 0; i < obstacle.length; i++){
+function updateObstacles() {
+   for (i = 0; i < obstacle.length; i++) {
         obstacle[i].checkCollision();
         obstacle[i].checkKeys();
         obstacle[i].checkGravity();
@@ -184,7 +153,7 @@ function updateObstacles(){
     }
 }
 
-function init(){
+function init() {
     game = new Scene();
     game.setSize(600, 400);
     timer = new Timer();
@@ -195,12 +164,12 @@ function init(){
     space2.setSpeed(0);
     space2.setPosition(900, 200);
     player = new Player();
-    player.setPosition(20,100);
+    player.setPosition(20, 100);
     makeObstacles();
     game.start();
-} // end init
+}
 
-function update(){
+function update() {
     game.clear();
     space1.update(); 
     space2.update();           

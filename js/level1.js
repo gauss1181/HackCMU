@@ -11,7 +11,7 @@ function Player() {
     tPlayer.falling = true;
     tPlayer.moving = true;
     tPlayer.dead = false;
-    tPlayer.step = 5
+    tPlayer.step = 5;
 
     tPlayer.checkKeys = function() {
         tPlayer.changeImage("img/cute.gif");
@@ -85,7 +85,7 @@ function Obstacle() {
     return tObstacle; 
 }
 
-function makeObstacles(){
+function makeObstacles() {
     oWidth = 100;
     oHeight = 25;
     obstacles = new Array(11);
@@ -119,7 +119,7 @@ function init() {
     game.start();
 }
 
-function update(){
+function update() {
     game.clear();
     space1.update();            
     player.checkKeys();

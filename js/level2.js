@@ -47,7 +47,7 @@ function Player() {
             this.y = 360;
             this.moving = false;
         } 
-        if(this.y < 15) {
+        if (this.y < 15) {
             this.y = 15;
         }
         if (this.x < 15) {

@@ -56,7 +56,7 @@ function Player() {
         if (this.x > 590) {
             this.x = 590;
             game.stop();
-            document.location.href="level2.html";
+            document.location.href = "level2.html";
         }
 
     }
